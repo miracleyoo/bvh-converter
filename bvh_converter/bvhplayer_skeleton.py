@@ -139,6 +139,7 @@ class Skeleton:
             if channel == "Zposition":
                 zoffset = offset
             offset += 1
+        print(self.root.channels)
         self.minx = 999999999999
         self.miny = 999999999999
         self.minz = 999999999999
@@ -584,7 +585,7 @@ def process_bvhkeyframe(keyframe, joint, t, DEBUG=0):
 ###############################
 # PROCESS_BVHFILE function
 
-def process_bvhfile(filename, DEBUG=0):
+def process_bvhfile(filename, is_mmd=False, DEBUG=0):
 
     # 9/11/08: the caller of this routine should cover possible exceptions.
     # Here are two possible errors:
@@ -606,7 +607,11 @@ def process_bvhfile(filename, DEBUG=0):
     # reading in the next line.
     my_bvh.read()  # Reads and parses the file.
 
-    hips = process_bvhnode(my_bvh.root)  # Create joint hierarchy
+    if is_mmd:
+        hips = process_bvhnode(my_bvh.root.children[1])  # Create joint hierarchy
+    else:
+        hips = process_bvhnode(my_bvh.root)  # Create joint hierarchy
+    
     print("done")
 
     print("Building skeleton...",)
