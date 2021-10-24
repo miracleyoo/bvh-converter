@@ -139,7 +139,7 @@ class Skeleton:
             if channel == "Zposition":
                 zoffset = offset
             offset += 1
-        print(self.root.channels)
+        # print(self.root.channels)
         self.minx = 999999999999
         self.miny = 999999999999
         self.minz = 999999999999
@@ -601,7 +601,7 @@ def process_bvhfile(filename, is_mmd=False, DEBUG=0):
     #
     # my_bvh.read() returns None on success and throws an exception on failure.
 
-    print("Reading BVH file...",)
+    print("❀ Reading BVH file...",)
     my_bvh = ReadBVH(filename)  # Doesn't actually read the file, just creates
     # a readbvh object and sets up the file for
     # reading in the next line.
@@ -614,7 +614,7 @@ def process_bvhfile(filename, is_mmd=False, DEBUG=0):
     
     print("done")
 
-    print("Building skeleton...",)
+    print("❀ Building skeleton...",)
     myskeleton = Skeleton(hips, keyframes=my_bvh.keyframes, frames=my_bvh.frames, dt=my_bvh.dt)
     print("done")
     if DEBUG:
