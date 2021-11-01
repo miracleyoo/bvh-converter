@@ -157,6 +157,7 @@ venv.bak/
 
 # Backups
 /backup
+results/
 
 # others
 *.csv
