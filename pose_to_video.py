@@ -5,8 +5,9 @@ import argparse
 import numpy as np
 import pickle as pkl
 import os.path as op
-
+import matplotlib
 from matplotlib import pyplot as plt
+matplotlib.use("Agg")
 
 from vis_utils import plot_skeleton_3d
 
@@ -25,9 +26,9 @@ def plt2arr(fig, dpi=180):
 def skeleton_frame(i, view_angle=240, cam_height=10, limits=None):
     fig = plot_skeleton_3d(kp13_arr[i], view_angle, cam_height, ret_fig=True, limits=limits)
     data = plt2arr(fig, True)
-    plt.clf()
+    # plt.clf()
     plt.close('all')
-    plt.cla()
+    # plt.cla()
     return data
 
 # Generate a video from the input absolute keypoints coordinate motion file

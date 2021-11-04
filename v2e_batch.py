@@ -8,15 +8,26 @@ from string import Template
 V2E_PATH = r'E:\GitHub\v2e'
 DATA_ROOT = r'J:\datasets\DVS\mmd'
 os.chdir(V2E_PATH)
+# CMD = r"""python v2e.py --overwrite --unique_output_folder true --no_preview 
+# --input_slowmotion_factor 1 --auto_timestamp_resolution true 
+# --pos_thres 0.2 --neg_thres 0.2 --sigma_thres 0.03 --cutoff_hz 30 
+# --leak_rate_hz 0.01 --shot_noise_rate_hz 0.5 --output_height 260 
+# --output_width 462 --dvs_exposure duration 0.0166666667 
+# --timestamp_resolution 0.002 --dvs_h5 events.h5 --dvs_text None 
+# --dvs_aedat2 None --avi_frame_rate 60 --slomo_model "input/SuperSloMo39.ckpt" 
+# --input "$input" --output_folder "$output" --batch_size 16
+# """.replace('\n',' ').replace('  ', ' ')
+
 CMD = r"""python v2e.py --overwrite --unique_output_folder true --no_preview 
---input_slowmotion_factor 1 --auto_timestamp_resolution true 
+--input_slowmotion_factor 1 --auto_timestamp_resolution false 
 --pos_thres 0.2 --neg_thres 0.2 --sigma_thres 0.03 --cutoff_hz 30 
 --leak_rate_hz 0.01 --shot_noise_rate_hz 0.5 --output_height 260 
---output_width 462 --dvs_exposure duration 0.0166666667 
---timestamp_resolution 0.002 --dvs_h5 events.h5 --dvs_text None 
---dvs_aedat2 None --avi_frame_rate 60 --slomo_model "input/SuperSloMo39.ckpt" 
+--output_width 462 --dvs_exposure duration 0.0166666667 --disable_slomo 
+--dvs_h5 events.h5 --dvs_text None --dvs_aedat2 None --avi_frame_rate 60 
 --input "$input" --output_folder "$output" --batch_size 16
 """.replace('\n',' ').replace('  ', ' ')
+
+
 CMD_TEMPLATE = Template(CMD)
 
 # print(CMD_TEMPLATE.substitute(input=r"D:\MMD\Projects\low-ligth-multi-motion-test\001.avi", output=r"D:\MMD\Projects\low-ligth-multi-motion-test\test17_mid_noise"))
