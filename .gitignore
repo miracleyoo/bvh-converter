@@ -161,3 +161,6 @@ results/
 
 # others
 *.csv
+
+/calibration/*.jpg
+/calibration/*.png
